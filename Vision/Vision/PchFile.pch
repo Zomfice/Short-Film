@@ -1,0 +1,50 @@
+//
+//  PchFile.pch
+//  Vision
+//
+//  Created by qianfeng0 on 16/6/11.
+//  Copyright © 2016年 Zomfice. All rights reserved.
+//
+
+#ifndef PchFile_pch
+#define PchFile_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+
+#import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
+#import "LORequestManger.h"
+#import "UIImageView+AFNetworking.h"
+//抽屉手势
+//#import "MMDrawerController.h"
+#import "BlurImageView.h"
+#import "MJRefresh.h"
+#import "FactoryUI.h"
+#import "MBProgressHUD.h"
+
+
+//二、全局的宏定义
+#define kWidth [UIScreen mainScreen].bounds.size.width
+#define kHeight [UIScreen mainScreen].bounds.size.height
+#define kSelfWidth self.frame.size.width
+#define kSelfHeight self.frame.size.height
+#define RGB(r,g,b,a) [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:a]
+//首页视频的url
+#define kEveryDay @"http://baobab.wandoujia.com/api/v1/feed?num=%d&date=%@&vc=67&u=011f2924aa2cf27aa5dc8066c041fe08116a9a0c&v=1.8.0&f=iphone"
+//分类URL
+#define CATEGORYURLL @"http://baobab.wandoujia.com/api/v3/videos?&categoryId=%@&num=%d"
+//排行URL
+#define SENIORITY @"http://baobab.wandoujia.com/api/v3/ranklist?&strategy=%@"
+//read/story的url
+#define StoryURL @"http://www.xiniugushi.com/function/story.inc.php?action=feedlist"
+#define MoreStoryURL @"http://www.xiniugushi.com/function/story.inc.php?action=morestorylist"
+//photoUrl
+#define Test @"http://meizi.leanapp.cn/category/All/page/1"
+
+#define MEIZI @"http://meizi.leanapp.cn/category/%@/page/%d"
+#endif
+
+#endif /* PchFile_pch */

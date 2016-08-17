@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="123" id="KGk-i7-Jjw" customClass="DownLoadCell">
+            <rect key="frame" x="0.0" y="0.0" width="319" height="123"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="319" height="122"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pkf-bD-v88">
+                        <rect key="frame" x="80" y="51" width="224" height="2"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="4Qx-QK-8gN"/>
+                        </constraints>
+                    </progressView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RaM-Be-wPT">
+                        <rect key="frame" x="184" y="73" width="120" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="TeJ-v5-lG6"/>
+                            <constraint firstAttribute="width" constant="120" id="kEU-7k-64C"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="开始">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="download:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="359-QM-VyS"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sle-GN-wH8">
+                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="5pi-sN-DOD"/>
+                            <constraint firstAttribute="height" constant="50" id="CyE-4O-KkU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-NU-qzR">
+                        <rect key="frame" x="80" y="20" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="3Wk-DY-UVc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B7-wG-gxB">
+                        <rect key="frame" x="10" y="63" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sle-GN-wH8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="4t1-7Y-nOD"/>
+                    <constraint firstItem="1AT-NU-qzR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="7Yy-Kb-rNu"/>
+                    <constraint firstItem="9B7-wG-gxB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="8xw-in-BPW"/>
+                    <constraint firstItem="1AT-NU-qzR" firstAttribute="leading" secondItem="sle-GN-wH8" secondAttribute="trailing" constant="20" id="Ew0-RO-QOG"/>
+                    <constraint firstItem="Pkf-bD-v88" firstAttribute="top" secondItem="1AT-NU-qzR" secondAttribute="bottom" constant="10" id="LCJ-5E-yIh"/>
+                    <constraint firstItem="RaM-Be-wPT" firstAttribute="top" secondItem="Pkf-bD-v88" secondAttribute="bottom" constant="20" id="MRg-Ma-2Up"/>
+                    <constraint firstItem="sle-GN-wH8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Vwf-5n-bf1"/>
+                    <constraint firstItem="9B7-wG-gxB" firstAttribute="top" secondItem="Pkf-bD-v88" secondAttribute="bottom" constant="10" id="XFU-vF-F4V"/>
+                    <constraint firstItem="RaM-Be-wPT" firstAttribute="trailing" secondItem="Pkf-bD-v88" secondAttribute="trailing" id="Xxa-f6-HR5"/>
+                    <constraint firstAttribute="trailing" secondItem="Pkf-bD-v88" secondAttribute="trailing" constant="15" id="mPi-gR-54r"/>
+                    <constraint firstItem="Pkf-bD-v88" firstAttribute="leading" secondItem="1AT-NU-qzR" secondAttribute="leading" id="mde-pU-gPd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="downloadBtn" destination="RaM-Be-wPT" id="jNz-aA-RKU"/>
+                <outlet property="progressLabel" destination="9B7-wG-gxB" id="s6f-mZ-02B"/>
+                <outlet property="progressView" destination="Pkf-bD-v88" id="XXq-52-hhY"/>
+                <outlet property="titleImageView" destination="sle-GN-wH8" id="GG0-aR-b8Y"/>
+                <outlet property="titleL" destination="1AT-NU-qzR" id="yHg-Mf-5QP"/>
+            </connections>
+            <point key="canvasLocation" x="192.5" y="246.5"/>
+        </tableViewCell>
+    </objects>
+</document>
