@@ -6,4 +6,4 @@
 <div align=left><img width="150" height="300" src="https://github.com/Zomfice/Short-Film/blob/master/source/short-film.gif"/></div>
 
 
-<div align=center><img width="300" height="150" src="https://github.com/Zomfice/Short-Film/blob/master/source/player.png"/></div>
+<div align=right><img width="300" height="150" src="https://github.com/Zomfice/Short-Film/blob/master/source/player.png"/></div>
