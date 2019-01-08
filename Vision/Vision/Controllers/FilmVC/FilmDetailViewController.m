@@ -10,12 +10,11 @@
 #import "FilmModel.h"
 #import "KRVideoPlayerController.h"
 #import "DBManager.h"
-#import "UMSocial.h"
 /**
  *  此界面的收藏下载依赖于数据库DBManager.h的创建，如果想要实现下载和收藏功能，需要重新创建DBmanager文件，同时需要修改存入表中的数据的值，这样就可以实现下载和收藏的功能同时实现
  
  */
-@interface FilmDetailViewController ()<UMSocialUIDelegate>
+@interface FilmDetailViewController ()
 
 @property (nonatomic,strong) UIImageView * imageViewL;
 @property (nonatomic,strong) UILabel * titleLabel;
@@ -148,29 +147,7 @@
         [self playVideoWithURL:[NSURL URLWithString:self.modelF.playUrl]];
     }else if (button.tag == 103){
 //        NSLog(@"分享");
-        [self share];
-    }
-}
-#pragma mark - 分享到第三方平台
-- (void)share{
-    
-    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:self.modelF.adTrack];
-    
-    [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:@"577a5bf967e58e8b00001872"
-                                      shareText:self.modelF.descriptionL
-                                     shareImage:[UIImage imageNamed:@"iconfont-iconfontshoucang"]
-                                shareToSnsNames:@[UMShareToTencent,UMShareToSina,UMShareToQQ,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQzone]
-                                       delegate:self];
-
-}
--(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
-{
-    //根据`responseCode`得到发送结果,如果分享成功
-    if(response.responseCode == UMSResponseCodeSuccess)
-    {
-        //得到分享到的微博平台名
-        //NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+        
     }
 }
 

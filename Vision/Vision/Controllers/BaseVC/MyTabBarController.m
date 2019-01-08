@@ -49,15 +49,21 @@
     ExploreViewController * exploreVC = [[ExploreViewController alloc]init];
     UINavigationController * exploreNav = [[UINavigationController alloc]initWithRootViewController:exploreVC];
     
-    self.viewControllers = @[homeNav,cateNav,photoVC,myNav,exploreNav];
+    //self.viewControllers = @[homeNav,cateNav,photoVC,myNav,exploreNav];
+    self.viewControllers = @[homeNav,cateNav,myNav];
 }
 - (void)createTabBarItem{
     //未选中的图片
-    NSArray * unselectedImageArray = @[@"home_normal@2x",@"read_normal@2x",@"video_normal@2x",@"my_normal@2x",@"photo_normal@2x"];
+    /*NSArray * unselectedImageArray = @[@"home_normal@2x",@"read_normal@2x",@"video_normal@2x",@"my_normal@2x",@"photo_normal@2x"];
     //选中的图片
     NSArray * selectedImageArray = @[@"home_selected@2x",@"read_selected@2x",@"video_selected@2x",@"my_selected@2x",@"photo_selected@2x"];
     //标题
-    NSArray  * titleArray = @[@"首页",@"分类",@"视频",@"排行",@"精选"];
+    NSArray  * titleArray = @[@"首页",@"分类",@"视频",@"排行",@"精选"];*/
+    NSArray * unselectedImageArray = @[@"home_normal@2x",@"read_normal@2x",@"video_normal@2x",@"my_normal@2x",@"photo_normal@2x"];
+    //选中的图片
+    NSArray * selectedImageArray = @[@"home_selected@2x",@"read_selected@2x",@"my_selected@2x"];
+    //标题
+    NSArray  * titleArray = @[@"首页",@"分类",@"排行"];
     for (int  i = 0; i < self.tabBar.items.count; i ++) {
         UIImage * unselectedImage = [UIImage imageNamed:unselectedImageArray[i]];
         unselectedImage = [unselectedImage  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

@@ -101,6 +101,7 @@
 //    [self.leftButton setImage:[UIImage imageNamed:@"icon_function"] forState:UIControlStateNormal];
 //    [self addLeftTarget:@selector(buttonClick)];
     self.titleLabel.text = @"分类";
+    self.navigationController.navigationBar.barTintColor = RGB(255, 255, 255, 1);
 }
 //返回事件
 //- (void)buttonClick{

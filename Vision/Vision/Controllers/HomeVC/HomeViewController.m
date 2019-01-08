@@ -66,18 +66,16 @@
 -(void)createRefresh
 {
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    //self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     [self.tableView.header beginRefreshing];
 }
 
--(void)loadNewData
-{
+-(void)loadNewData{
     _page = 1;
     [self jsonSelection];
 }
 
--(void)loadMoreData
-{
+-(void)loadMoreData{
     _page ++;
     [self jsonSelection];
 }
@@ -93,15 +91,15 @@
     
     
     NSString *url = [NSString stringWithFormat:kEveryDay,_page * 10,dateString];
-    
+    __weak __typeof(self) weakself = self;
     [LORequestManger GET:url success:^(id response) {
-        if (_page != 1) {
-            [self.dateArray removeAllObjects];
+        if (_page != 1 && weakself.dateArray) {
+            [weakself.dateArray removeAllObjects];
+            [weakself.tableView.footer endRefreshing];
+            return ;
         }
         
         NSDictionary *Dic = (NSDictionary *)response;
-        
-        //NSLog(@"%@",Dic);
         
         NSArray *array = Dic[@"dailyList"];
         
@@ -125,7 +123,7 @@
             }
             NSString *date = [[dic[@"date"] stringValue] substringToIndex:10];
             
-            [self.selectDic setValue:selectArray forKey:date];
+            [weakself.selectDic setValue:selectArray forKey:date];
         }
         
         NSComparisonResult (^priceBlock)(NSString *, NSString *) = ^(NSString *string1, NSString *string2){
@@ -143,18 +141,17 @@
             
         };
         
-        self.dateArray = [[[self.selectDic allKeys] sortedArrayUsingComparator:priceBlock]mutableCopy];
+        weakself.dateArray = [[[weakself.selectDic allKeys] sortedArrayUsingComparator:priceBlock]mutableCopy];
+        for (int i = 0; i < 10; i++) {
+            [weakself.dateArray addObjectsFromArray:weakself.dateArray.copy];
+        }
         
-        //NSLog(@"%ld",[self.dateArray count]);
-        
-        
-        [self.tableView.header endRefreshing];
-        [self.tableView.footer endRefreshing];
-        [self.tableView reloadData];
+        [weakself.tableView reloadData];
+        [weakself.tableView.header endRefreshing];
+        [weakself.tableView.footer endRefreshing];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"%@",error);
-        
+        [weakself.tableView.header endRefreshing];
+        [weakself.tableView.footer endRefreshing];
     }];
     
 }
@@ -162,9 +159,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    //self.navigationController.navigationBarHidden = YES;
     [self resetNav];
-    //[self jsonSelection];
     
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.tableView registerClass:[EveryDayCell class] forCellReuseIdentifier:@"cell"];
@@ -172,12 +167,8 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self createRefresh];
 }
-//- (void)viewWillAppear:(BOOL)animated{
-//    [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
-//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - tabar隐藏取消
@@ -278,7 +269,7 @@
 #pragma mark --------- 设置待播放界面 ----------
 
 - (void)showImageAtIndexPath:(NSIndexPath *)indexPath{
-    
+    self.tabBarController.tabBar.hidden = YES;
     _array = _selectDic[_dateArray[indexPath.section]];
     _currentIndexPath = indexPath;
     
@@ -390,21 +381,20 @@
 #pragma mark -------------- 平移手势触发事件 -----------
 
 - (void)panAction:(UISwipeGestureRecognizer *)swipe{
-    
+    __weak __typeof(self) weakself = self;
     [_everyDetail animationDismissUsingCompeteBlock:^{
         //将视频移除
-        [self.videoController dismiss];
+        [weakself.videoController dismiss];
         _everyDetail = nil;
-        
+        weakself.tabBarController.tabBar.hidden = NO;
     }];
 }
 
 #pragma mark -------------- 点击手势触发事件 -----------
 
 - (void)tapAction{
+    //self.tabBarController.tabBar.hidden = YES;
     EveryDayModel *model = [_array objectAtIndex:self.currentIndexPath.row];
-    self.tabBarController.tabBar.hidden = YES;
-    
     [self playVideoWithURL:[NSURL URLWithString:model.playUrl]];
 }
 - (void)playVideoWithURL:(NSURL *)url
@@ -448,14 +438,12 @@
 #pragma mark - 设置导航
 - (void)resetNav{
     self.title = @"视野";
-    self.navigationController.navigationBar.barTintColor = RGB(242, 242, 242, 1);
-    self.leftButton = [FactoryUI createButtonWithFrame:CGRectMake(0, 0, 44, 44) title:nil titleColor:nil backgroundColor:nil type:UIButtonTypeCustom target:self selector:@selector(buttonClick)];
-    [self.leftButton setImage:[UIImage imageNamed:@"icon_function"] forState:UIControlStateNormal];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftButton];
+    self.navigationController.navigationBar.barTintColor = RGB(255, 255, 255, 1);
+//    self.leftButton = [FactoryUI createButtonWithFrame:CGRectMake(0, 0, 44, 44) title:nil titleColor:nil backgroundColor:nil type:UIButtonTypeCustom target:self selector:@selector(buttonClick)];
+//    [self.leftButton setImage:[UIImage imageNamed:@"icon_function"] forState:UIControlStateNormal];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftButton];
 }
 - (void)buttonClick{
-    
-    
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 

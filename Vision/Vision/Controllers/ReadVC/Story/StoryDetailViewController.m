@@ -7,7 +7,6 @@
 //
 
 #import "StoryDetailViewController.h"
-#import "UMSocial.h"
 #import "DBManager.h"
 @interface StoryDetailViewController (){
     UIWebView * _webView;
@@ -66,7 +65,6 @@
 }
 - (void)shareButtonClick{
     //UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@""]]];
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"507fcab25270157b37000010" shareText:_model.shareurl shareImage:nil shareToSnsNames:@[UMShareToQQ,UMShareToQzone,UMShareToSina,UMShareToWechatSession,UMShareToWechatTimeline] delegate:nil];
 }
 #pragma mark - 收藏
 - (void)collectButtonClick:(UIButton *)button{

@@ -108,6 +108,7 @@
 #pragma mark - 设置导航 -
 -  (void)resetNav{
     self.titleLabel.text = @"排行";
+    self.navigationController.navigationBar.barTintColor = RGB(255, 255, 255, 1);
 }
 #pragma mark - 创建头部按钮
 - (void)createHeaderView{

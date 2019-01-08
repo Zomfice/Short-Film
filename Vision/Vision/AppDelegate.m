@@ -14,11 +14,6 @@
 
 #import "GuidePageView.h"
 #import "MyViewController.h"
-#import "UMSocial.h"
-#import "UMSocialWechatHandler.h"
-#import "UMSocialQQHandler.h"
-#import "UMSocialSinaSSOHandler.h"
-#define UmengAppkey @"577a5bf967e58e8b00001872"
 
 @interface AppDelegate ()
 //引导页
@@ -51,39 +46,7 @@
     self.window.rootViewController = drawerVC;
     //引导页
     [self createGuidePage];
-    
-    //友盟分享
-    [self UMShare];
     return YES;
-}
-#pragma mark - 友盟分享
-- (void)UMShare{
-    //设置友盟Appkey
-    [UMSocialData setAppKey:UmengAppkey];
-    
-    //设置微信AppId，设置分享url，默认使用友盟的网址
-    [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
-    
-    //设置手机QQ的AppId，指定你的分享url，若传nil，将使用友盟的网址
-    [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
-    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"3921700954"
-                                              secret:@"04b48b094faeb16683c32669824ebdad"
-                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
-    [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage; //设置QQ分享纯图片，默认分享图文消息
-    [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeImage;  //设置微信好友分享纯图片
-    [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeImage;  //设置微信朋友圈分享纯图片
-
-}
-
-
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    BOOL result = [UMSocialSnsService handleOpenURL:url];
-//    if (result == FALSE) {
-//        //调用其他SDK
-//    }
-    return result;
 }
 
 #pragma mark - 创建引导页
