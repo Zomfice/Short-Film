@@ -17,4 +17,4 @@
 [LXCategory](https://github.com/xllpp/LXCategory)
 
 #### 网络框架
-[LXNetworking](https://github.com/xllpp/LXNetworking)
+[LXCache](https://github.com/xllpp/LXCache)
