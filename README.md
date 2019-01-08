@@ -10,3 +10,11 @@
 #### 当前播放器界面
 
 <div align=left><img width="300" height="150" src="https://github.com/Zomfice/Short-Film/blob/master/source/player.png"/></div>
+
+
+#### 点语法UI框架
+
+[LXCategory](https://github.com/xllpp/LXCategory)
+
+#### 网络框架
+[LXNetworking](https://github.com/xllpp/LXNetworking)
