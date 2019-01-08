@@ -9,7 +9,7 @@
 
 #### 当前播放器界面
 
-<div align=left><img width="300" height="150" src="https://github.com/Zomfice/Short-Film/blob/master/source/player.png"/></div>
+<div align=left><img width="300" height="150" src="https://github.com/Zomfice/Short-Film/blob/master/source/player1.png"/></div>
 
 
 #### 点语法UI框架
