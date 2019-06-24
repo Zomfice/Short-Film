@@ -1887,7 +1887,7 @@
 				TargetAttributes = {
 					A664BE671D0BB74000E6F7A5 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = LHJWAFEPR2;
+						DevelopmentTeam = 9Z4UMADRX8;
 					};
 					A664BE801D0BB74100E6F7A5 = {
 						CreatedOnToolsVersion = 7.1;
@@ -1904,6 +1904,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				"zh-Hans",
@@ -2340,7 +2341,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9Z4UMADRX8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2361,7 +2363,7 @@
 					"$(PROJECT_DIR)/Vision/ThirdLib/SinaSSO",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = come.fice.2016NF.Vision;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zomfice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2371,7 +2373,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9Z4UMADRX8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2392,7 +2395,7 @@
 					"$(PROJECT_DIR)/Vision/ThirdLib/SinaSSO",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = come.fice.2016NF.Vision;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zomfice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

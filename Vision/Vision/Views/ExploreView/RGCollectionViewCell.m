@@ -11,6 +11,7 @@
 @implementation RGCollectionViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 
